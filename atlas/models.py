@@ -1,6 +1,9 @@
 # Create your models here.
 from django.db import models
 
+
+
+
 class SupervisoryFactor(models.Model):
     id = models.AutoField(
         primary_key=True,
@@ -51,6 +54,14 @@ class Trade(models.Model):
         max_length=50,
         help_text="Identifier for the netting set to which the trade belongs"
     )
+
+    counterparty_id = models.CharField(
+        max_length=50,
+        help_text="Identifier for counterparty to which the trade belongs",
+        null=True,
+        blank=True
+    )
+
     asset_class = models.CharField(
         max_length=50,
         help_text="Asset class of the trade (e.g., Interest Rate, Equity)"
@@ -68,7 +79,8 @@ class Trade(models.Model):
     collateral = models.DecimalField(
         max_digits=20,
         decimal_places=2,
-        default=0.00,
+        null=True,
+        blank=True,
         help_text="Collateral value associated with the trade"
     )
     is_collateral_posted = models.BooleanField(
