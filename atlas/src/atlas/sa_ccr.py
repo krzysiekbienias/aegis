@@ -1,9 +1,11 @@
+import pandas as pd
+
 class StandardApproachCCRInterface:
     def __init__(self):
         pass
 
 
-    def fetch_trades(self):
+    def fetch_trades(self,trade_id:str|None,netting_set_id:str|None) -> pd.DataFrame:
         """
         Fetch trades from the database using Django ORM.
         Trades are fetched based on the counterparty ID or netting set ID.
@@ -13,7 +15,7 @@ class StandardApproachCCRInterface:
         """
         pass
 
-    def calulateSA_replacement_cost(self,netting_set_id):
+    def calulate_replacement_cost(self,netting_set_id):
         """
         Calculate the Replacement Cost (RC).
 
@@ -52,6 +54,12 @@ class StandardApproachCCRInterface:
         """
 
 
+class StandardApproachCCR:
+    def __init__(self):
+        pass
+
+    def calculate_replacement(self,trades_df:pd.DataFrame):
+        pass
 
 
 
